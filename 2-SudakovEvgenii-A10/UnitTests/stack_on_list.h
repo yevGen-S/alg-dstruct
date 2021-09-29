@@ -12,8 +12,7 @@ typedef struct list_t {	// linked list
 }list_t;
 
 list_t* CreateStack();				// function that create stack
-void DeleteStack(list_t* stack);	// function that delete stack
+int DeleteStack(list_t* stack);		// function that delete stack
 void Push(list_t* stack, int data);	// function that add node to the end of the stack
 void Pop(list_t* stack);			// function that delete node in the end of the stack
 int Top(list_t* stack);				// function that show last node of the stack
-void PrintStack(list_t* stack);		// function to print the stack

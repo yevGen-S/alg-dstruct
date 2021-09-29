@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "stack_on_list.h"
 
+
 list_t* CreateStack() {
 	list_t* stack = (list_t*)malloc(sizeof(list_t));
 	node_t* head_node = (node_t*)malloc(sizeof(node_t));
@@ -18,7 +19,7 @@ list_t* CreateStack() {
 	return stack;
 }
 
-void DeleteStack(list_t* stack) {
+int DeleteStack(list_t* stack) {
 	node_t* delete_node = stack->head;
 
 	while (stack->head != NULL) {
@@ -26,6 +27,8 @@ void DeleteStack(list_t* stack) {
 		stack->head = stack->head->next;
 		free(delete_node);
 	}
+
+	return 0;
 }
 
 void Push(list_t* stack, int node_data) {
@@ -39,8 +42,8 @@ void Push(list_t* stack, int node_data) {
 	new_node->data = node_data;
 	stack->top->next = new_node;
 	stack->top = stack->top->next;
-	stack->top->next = NULL;
 	stack->length += 1;
+	stack->top->next = NULL;
 }
 
 void Pop(list_t* stack) {
@@ -70,16 +73,4 @@ int Top(list_t* stack) {
 		exit(1);
 	}
 	return stack->top->data;
-}
-
-void PrintStack(list_t* stack) {
-	if (stack == NULL) {
-		return;
-	}
-	node_t* tmp_node = stack->head->next;
-	while (tmp_node != NULL) {
-		printf("%d ", tmp_node->data);
-		tmp_node = tmp_node->next;
-	}
-	putchar('\n');
 }
