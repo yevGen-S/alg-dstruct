@@ -2,19 +2,16 @@
 #include <stdlib.h>
 #include "stack_on_arr.h"
 
-//void CreateStackSA(size_t n) {
-//	stack_on_arr_t* stack;
-//	stack->arr = (data_t*)malloc(sizeof(data_t) * n);
-//	if (stack->arr == NULL) {
-//		fprintf(stderr, "%s", "ERROR_MEMORY_ALOC");
-//		exit(-1);
-//	}
-//}
+typedef enum ERRORS{
+	STACK_OVERFLOW,
+	STACK_UNDERFLOW
+}error_t;
+
 
 void PushSA(stack_on_arr_t* stack, data_t data) { 
 	if (stack->length >= MAX_SIZE) {
 		fprintf(stderr, "%s", "STACK_OVERFLOW");
-		exit(-1);
+		exit(STACK_OVERFLOW);
 	}
 	stack->arr[stack->length] = data;
 	stack->length++;
@@ -23,7 +20,7 @@ void PushSA(stack_on_arr_t* stack, data_t data) {
 void PopSA(stack_on_arr_t* stack) {
 	if (stack->length <= 0) {
 		fprintf(stderr, "%s", "STACK_UNDERFLOW");
-		exit(-2);
+		exit(STACK_UNDERFLOW);
 	}
 	stack->length--;
 }

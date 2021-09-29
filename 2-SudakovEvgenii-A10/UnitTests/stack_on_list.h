@@ -1,5 +1,7 @@
 #pragma once
 
+
+
 typedef struct node_t { // Node in list 
 	struct node_t* next;
 	int data;

@@ -2,6 +2,11 @@
 #include <stdlib.h>
 #include "stack_on_list.h"
 
+typedef enum ERRORS{
+	ERROR_MEMORY_ALLOC,
+	STACK_DELETED,
+	EMPTY_STACK,
+}error_t;
 
 list_t* CreateStack() {
 	list_t* stack = (list_t*)malloc(sizeof(list_t));
@@ -9,7 +14,7 @@ list_t* CreateStack() {
 
 	if (stack == NULL || head_node == NULL) {
 		fprintf(stderr, "%s", "ERROR_MEMORY_ALLOC");
-		exit(1);
+		exit(ERROR_MEMORY_ALLOC);
 	}
 
 	stack->length = 0;
@@ -36,7 +41,7 @@ void Push(list_t* stack, int node_data) {
 
 	if (new_node == NULL) {
 		fprintf(stderr, "%s", "ERROR_MEMORY_ALLOC");
-		exit(1);
+		exit(ERROR_MEMORY_ALLOC);
 	}
 
 	new_node->data = node_data;
@@ -66,11 +71,11 @@ void Pop(list_t* stack) {
 int Top(list_t* stack) {
 	if (stack == NULL) {
 		fprintf(stderr, "%s", "STACK_DELETED");
-		exit(1);
+		exit(STACK_DELETED);
 	}
 	if (stack->length == 0) {
 		fprintf(stderr, "%s", "EMPTY_STACK");
-		exit(1);
+		exit(EMPTY_STACK);
 	}
 	return stack->top->data;
 }
