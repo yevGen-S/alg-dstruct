@@ -3,7 +3,6 @@
 extern "C" {
 #include "stack_on_arr.h"
 #include "stack_on_list.h"
-#include "time.h"
 }
 
 list_t* test_stack = CreateStack();
