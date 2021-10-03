@@ -3,6 +3,7 @@
 extern "C" {
 #include "stack_on_arr.h"
 #include "stack_on_list.h"
+#include "time.h"
 }
 
 list_t* test_stack = CreateStack();
@@ -68,15 +69,15 @@ TEST(testStackOnArr, handlePopFromStackOnArrFun) {
 	PushSA(&stack_arr2, 1);
 	PushSA(&stack_arr2, 2);
 	PopSA(&stack_arr2);
-	EXPECT_TRUE(stack_arr2.arr[stack_arr2.length - 1] == 1);
+	EXPECT_TRUE(stack_arr2.arr[0] == 1);
 }
 
 TEST(testStackOnArr, handleTopFromStackOnArrFun) {
 	stack_on_arr_t stack_arr3;
-	stack_arr3.length = 0;
-	PushSA(&stack_arr3, 1);
-	PushSA(&stack_arr3, 2);
-	PushSA(&stack_arr3, 3);
-	EXPECT_EQ(TopSA(&stack_arr3),stack_arr3.arr[stack_arr3.length - 1]);
+	stack_arr3.length = 3;
+	stack_arr3.arr[0] = 1;
+	stack_arr3.arr[1] = 2;
+	stack_arr3.arr[2] = 3;
+	EXPECT_EQ(TopSA(&stack_arr3), 3);
 }
 
