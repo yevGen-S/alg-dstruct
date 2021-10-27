@@ -1,0 +1,10 @@
+.vs/
+.idea/
+out/
+x64/
+*.vcxproj*
+*.sln
+packages/
+**Debug/
+CMakeLists.txt
+
