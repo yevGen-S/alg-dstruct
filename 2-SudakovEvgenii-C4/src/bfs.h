@@ -39,4 +39,4 @@ graph_t* GetGraph(FILE* file);
 int** CreateAdjencyMatrix(graph_t* graph);
 boolean IsQueueEmpty(queue_t* queue);
 void bfs(FILE* file);
-void StressTest();
+void StressTest(FILE* file);

@@ -1,5 +1,6 @@
 
 #include <stdio.h>
+#include <stdlib.h>
 #include "bfs.h"
 /*
  *
@@ -12,18 +13,23 @@
 
 
 Stress test:
- Number of vertices:
- Memory used:
- Execution time:
+ Number of vertices: 50000
+ Memory used: 4 GB
+ Execution time: 28.334860
 
 
  */
 
 
 
-int main()
-{
-    StressTest();
+int main(){
+    FILE* file = fopen("dataset_for_bfs_test.txt","w+");
+    if (file == NULL){
+        fprintf(stderr,"%s","Error of opening file");
+        exit(ERROR_FILE_OPENING);
+    }
+
+    StressTest(file);
 
     return 0;
 }

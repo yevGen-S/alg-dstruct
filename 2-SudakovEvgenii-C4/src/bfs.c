@@ -1,6 +1,22 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include "bfs.h"
+#include "windows.h"
+#define NUMBER_OF_VERTICES 50000
+
+
+#define INIT_TIMER \
+    LARGE_INTEGER frequency; \
+    LARGE_INTEGER start,end; \
+    double result; \
+    QueryPerformanceFrequency(&frequency);
+
+#define TIMER_START QueryPerformanceCounter(&start);
+
+#define TIMER_STOP \
+    QueryPerformanceCounter(&end); \
+    result =(float)(end.QuadPart-start.QuadPart)/frequency.QuadPart; \
 
 
 queue_t* CreateQueue(){
@@ -156,3 +172,26 @@ void bfs(FILE* file){
     free(visitedNodes);
 }
 
+void StressTest(FILE* file){
+    srand(time(NULL));
+
+    fprintf(file, "%d\n", NUMBER_OF_VERTICES + 2);
+    fprintf(file, "0 1\n");
+
+    for (int i = 0; i < NUMBER_OF_VERTICES; i++) {
+        fprintf(file, "%d %d\n", 1 + rand() % (NUMBER_OF_VERTICES/100),rand() % NUMBER_OF_VERTICES);
+
+    }
+
+    fprintf(file, "\n");
+
+    fseek(file, SEEK_SET, 0);
+
+    INIT_TIMER
+    TIMER_START
+    bfs(file);
+    TIMER_STOP
+    printf("\ntime = %lf",result);
+
+    fclose(file);
+}
