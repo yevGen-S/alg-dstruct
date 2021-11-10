@@ -15,7 +15,7 @@
 Stress test:
  Number of vertices: 50000
  Memory used: 4 GB
- Execution time: 28.334860
+ Execution time: 28.334860 s
 
 
  */
