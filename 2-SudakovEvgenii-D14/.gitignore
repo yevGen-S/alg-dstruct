@@ -1,0 +1,8 @@
+.vs/
+/UnitTests/*.vcxproj*
+/UnitTests/packages*
+/UnitTests/pch*
+*.vcxproj*
+*.sln
+packages/
+**Debug/
