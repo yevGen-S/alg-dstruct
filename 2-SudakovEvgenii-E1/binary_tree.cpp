@@ -1,7 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-//#include <windows.h>
-//#include "binary_tree.h"
 
 typedef struct tree {
     int key;
@@ -45,37 +43,6 @@ tree * Insert(tree* t, int val){
     return t;
 }
 
-//void Insert_iterative(tree** t, int val){
-//    if(!(*t)){
-//        *t = (tree*)malloc(sizeof(tree));
-//        (*t)->key = val;
-//        (*t)->right= (*t)->left = NULL;
-//        return;
-//    }
-//    tree* node = *t;
-//    while(node){
-//        if(node-> key == val){
-//            return;
-//        }
-//        else if (node->key < val){
-//            if( !node-> left ){
-//                node->left = (tree*)malloc(sizeof(tree));
-//                node->left->key = val;
-//                return;
-//            }
-//            node = node->left;
-//
-//        }
-//        else{
-//            if( !node-> right ){
-//                node->right = (tree*)malloc(sizeof(tree));
-//                node->right->key = val;
-//                return;
-//            }
-//            node = node->right;
-//        }
-//    }
-//}
 
 tree* Del1(tree** q, tree* p){
     tree* r;
