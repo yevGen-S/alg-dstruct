@@ -1,0 +1,5 @@
+/.idea
+/pygen_tests
+/cmake-build-debug
+*test
+CMakeLists.txt
