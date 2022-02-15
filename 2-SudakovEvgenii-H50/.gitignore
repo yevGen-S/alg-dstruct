@@ -5,4 +5,3 @@
 CMakeLists.txt
 /src/binarytree.c
 /src/binarytree.h
-main.cpp

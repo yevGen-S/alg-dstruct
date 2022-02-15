@@ -1,8 +1,24 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <windows.h>
-#include "aatree.h"
 
+
+typedef  struct AATree{
+    struct AATree* left;
+    struct AATree* right;
+    int level;
+    int key;
+}AATree;
+
+
+void AATreeInit(void);
+AATree* AATreeScew(AATree* tree);
+AATree* AATreeSplit(AATree* tree);
+AATree*  AATreeInsertNode(int data, AATree* tree);
+AATree* AATreeDeleteNode(int data, AATree* tree);
+void AATreePrint(AATree* t, int y);
+int AATreeSearch(AATree * tree, int find) ;
+void AATreeDestroy(AATree* tree);
+void AATreePrint2(AATree* tree);
 
 
 static AATree* bottom = NULL;
@@ -12,21 +28,21 @@ static int x = 1;
 
 
 
-void gotoxy( int y){
-    COORD c = { (short)x, (short)y };
-    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), c);
-}
+//void gotoxy( int y){
+//    COORD c = { (short)x, (short)y };
+//    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), c);
+//}
 
 
-void AATreePrint(AATree* t, int y){
-    if (t != bottom){
-        AATreePrint(t->left ,y + 2);
-        gotoxy(y);
-        printf("%d ", t->key);
-        x += 7;
-        AATreePrint(t->right,y + 2);
-    }
-}
+//void AATreePrint(AATree* t, int y){
+//    if (t != bottom){
+//        AATreePrint(t->left ,y + 2);
+//        gotoxy(y);
+//        printf("%d ", t->key);
+//        x += 7;
+//        AATreePrint(t->right,y + 2);
+//    }
+//}
 
 
 
@@ -168,4 +184,44 @@ void AATreeDestroy(AATree* tree) {
     AATreeDestroy(tree->left);
     AATreeDestroy(tree->right);
     free(tree);
+}
+
+
+
+
+
+
+
+int main(void) {
+    char command;
+    int key;
+    int y = 1;
+    AATree *t = NULL;
+    AATreeInit();
+    while (scanf("%c", &command) >= 1) {
+        if (command != 'p' && command != 'q')
+            scanf("%i", &key);
+        switch (command) {
+            case 'a':
+                t = AATreeInsertNode(key, t);
+                break;
+            case 'r':
+                t = AATreeDeleteNode(key, t);
+                break;
+            case 'f':
+                if (AATreeSearch(t, key))
+                    puts("yes");
+                else
+                    puts("no");
+                break;
+            case 'p':
+                AATreePrint2(t);
+                putchar('\n');
+                break;
+            case 'q':
+                AATreeDestroy(t);
+                return 0;
+        }
+    }
+
 }
