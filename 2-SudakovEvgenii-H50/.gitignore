@@ -3,5 +3,3 @@
 /cmake-build-debug
 *test
 CMakeLists.txt
-/src/binarytree.c
-/src/binarytree.h
