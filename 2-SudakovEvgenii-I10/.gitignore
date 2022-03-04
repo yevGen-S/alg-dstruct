@@ -1,0 +1,7 @@
+/.idea
+/pygen_tests
+/cmake-build-debug
+*test
+CMakeLists.txt
+/test_system
+../2-SudakovEvgenii-H50
