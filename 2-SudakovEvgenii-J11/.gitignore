@@ -1,0 +1,5 @@
+/cmake-build-debug
+/test_system
+/venv
+CMakeLists.txt
+/.idea
